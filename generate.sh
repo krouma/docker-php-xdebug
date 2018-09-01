@@ -5,12 +5,14 @@ apcu_version=(
 	[5.6]='apcu-4.0.11'
 	[7.0]='apcu-stable'
 	[7.1]='apcu-stable'
+	[7.2]='apcu-stable'
 )
 
 declare -A xdebug_version
 xdebug_version=(
 	[5.6]='xdebug-stable'
 	[7.0]='xdebug-stable'
+	[7.1]='xdebug-stable'
 	[7.1]='xdebug-stable'
 )
 
@@ -19,9 +21,10 @@ extensions_dir=(
 	[5.6]='no-debug-non-zts-20131226'
 	[7.0]='no-debug-non-zts-20151012'
 	[7.1]='no-debug-non-zts-20160303'
+	[7.2]='no-debug-non-zts-20170718'
 )
 
-for version in 5.6 7.0 7.1; do
+for version in 5.6 7.0 7.1 7.2; do
   mkdir -p "${version}"
   dockerfile=${version}/Dockerfile
   echo "FROM php:${version}-apache" > ${dockerfile}
