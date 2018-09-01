@@ -21,7 +21,8 @@ It also does the following:
 * [`5.6` (*5.6/Dockerfile*)](https://github.com/MiLk/docker-php-xdebug/blob/master/5.6/Dockerfile)
 * [`7.0` (*7.0/Dockerfile*)](https://github.com/MiLk/docker-php-xdebug/blob/master/7.0/Dockerfile)
 * [`7.1` (*7.1/Dockerfile*)](https://github.com/Milk/docker-php-xdebug/blob/master/7.1/Dockerfile)
-* [`7.2` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
+* [`7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
+* [`7.2-nette` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2-nette/Dockerfile)
 
 ## How to use this image.
 
