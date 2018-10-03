@@ -1,4 +1,4 @@
-FROM milk/php-xdebug:7.1
+FROM krouma/php-xdebug:7.1
 
 RUN mkdir /var/www/html/log
 
