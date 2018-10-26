@@ -18,10 +18,10 @@ It also does the following:
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`7.2.10`, `7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
-* [`7.2.10-nette`, `7.2-nette` (*7.2-nette/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2-nette/Dockerfile)
-* [`7.1.22`, `7.1` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1/Dockerfile)
-* [`7.1.22-nette`, `7.1-nette` (*7.1-nette/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1-nette/Dockerfile)
+* [`7.2.11`, `7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
+* [`7.2.11-nette`, `7.2-nette` (*7.2-nette/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2-nette/Dockerfile)
+* [`7.1.23`, `7.1` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1/Dockerfile)
+* [`7.1.24-nette`, `7.1-nette` (*7.1-nette/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1-nette/Dockerfile)
 
 ## How to use this image.
 
