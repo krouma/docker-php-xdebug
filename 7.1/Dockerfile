@@ -36,4 +36,8 @@ RUN echo "date.timezone = \"UTC\"" >> /usr/local/etc/php/conf.d/timezone.ini
 
 RUN a2enmod rewrite
 
+RUN mkdir /var/www/html/log; \
+    mkdir -p /var/www/html/temp/cache; \
+    chmod 777 -R /var/www/html/log /var/www/html/temp
+
 EXPOSE 80
