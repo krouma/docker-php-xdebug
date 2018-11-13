@@ -13,6 +13,6 @@ for version in ${MINOR_VERSIONS[*]}; do
     docker build -t krouma/php-xdebug:${version} ${version} --no-cache
 
     #tag fullversion
-    printf "\nTagging ${version} as ${fulversion}\n"
-    docker tag krouma/php-xdebug:${version} krouma/php-xdebug{$fullversion}
+    printf "\nTagging ${version} as ${fullversion}\n"
+    docker tag krouma/php-xdebug:${version} krouma/php-xdebug:${fullversion}
 done
