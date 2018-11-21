@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-MINOR_VERSIONS=(7.1 7.2)
+MINOR_VERSIONS=$@
 
 for version in ${MINOR_VERSIONS[*]}; do
     #update base container version and save it to fullversion
     printf "\nGetting latest version of PHP ${version}\n"
-    docker pull php:${version}
+    docker pull php:${version}-apache
     fullversion=$(docker run -a stdout --rm php:${version}-apache php --version | head -1 | awk '{print $2}')
 
     #build containers
