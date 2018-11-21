@@ -19,7 +19,7 @@ It also does the following:
 ## Supported tags and respective `Dockerfile` links
 
 * [`7.2.12`, `7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
-* [`7.1.23`, `7.1` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1/Dockerfile)
+* [`7.1.24`, `7.1` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1/Dockerfile)
 
 ## How to use this image.
 
