@@ -6,6 +6,7 @@ apcu_version=(
 	[7.0]='apcu-stable'
 	[7.1]='apcu-stable'
 	[7.2]='apcu-stable'
+	[7.3]='apcu-stable'
 )
 
 declare -A xdebug_version
@@ -14,6 +15,7 @@ xdebug_version=(
 	[7.0]='xdebug-stable'
 	[7.1]='xdebug-stable'
 	[7.2]='xdebug-stable'
+	[7.3]='xdebug-stable'
 )
 
 declare -A extensions_dir
@@ -22,6 +24,7 @@ extensions_dir=(
 	[7.0]='no-debug-non-zts-20151012'
 	[7.1]='no-debug-non-zts-20160303'
 	[7.2]='no-debug-non-zts-20170718'
+	[7.3]='no-debug-non-zts-20180731'
 )
 
 for version in $@; do
