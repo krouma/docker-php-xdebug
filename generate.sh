@@ -24,7 +24,7 @@ extensions_dir=(
 	[7.2]='no-debug-non-zts-20170718'
 )
 
-for version in 5.6 7.0 7.1 7.1-nette 7.2 7.2-nette; do
+for version in $@; do
   mkdir -p "${version}"
   dockerfile=${version}/Dockerfile
   echo "FROM php:${version}-apache" > ${dockerfile}
