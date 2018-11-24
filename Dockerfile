@@ -1,4 +1,4 @@
-LABEL maintainer "Emilien Kenler <hello@emilienkenler.com>"
+LABEL maintainer "Matyas Kroupa <kroupa.matyas@gmail.com>"
 
 RUN apt-get update && apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev g++ graphviz && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring mcrypt zip sockets intl bcmath
@@ -33,5 +33,9 @@ RUN echo "realpath_cache_size=4096k" > /usr/local/etc/php/conf.d/tuning.ini && \
 RUN echo "date.timezone = \"UTC\"" >> /usr/local/etc/php/conf.d/timezone.ini
 
 RUN a2enmod rewrite
+
+RUN mkdir /var/www/html/log; \
+    mkdir -p /var/www/html/temp/cache; \
+    chmod 777 -R /var/www/html/log /var/www/html/temp
 
 EXPOSE 80
