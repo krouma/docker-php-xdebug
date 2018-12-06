@@ -25,7 +25,7 @@ It also does the following:
 
 See [the `php` image documentation](https://hub.docker.com/_/php/).
 
-But use `milk/php-xdebug` instead of `php`.
+But use `krouma/php-xdebug` instead of `php`.
 
 ## How to use XDebug
 
