@@ -15,7 +15,7 @@ xdebug_version=(
 	[7.0]='xdebug-stable'
 	[7.1]='xdebug-stable'
 	[7.2]='xdebug-stable'
-	[7.3]='xdebug-stable'
+	[7.3]='xdebug-beta'
 )
 
 declare -A extensions_dir
