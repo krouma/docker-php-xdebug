@@ -11,7 +11,7 @@ apcu_version=(
 
 declare -A xdebug_version
 xdebug_version=(
-	[5.6]='xdebug-stable'
+	[5.6]='xdebug-2.5.5'
 	[7.0]='xdebug-stable'
 	[7.1]='xdebug-stable'
 	[7.2]='xdebug-stable'
