@@ -26,6 +26,14 @@ extensions_dir=(
 	[7.2]='no-debug-non-zts-20170718'
 	[7.3]='no-debug-non-zts-20180731'
 )
+declare -A dependencies
+dependencies=(
+    [5.6]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
+    [7.0]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
+    [7.1]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
+    [7.2]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
+    [7.3]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
+)
 
 for version in $@; do
   mkdir -p "${version}"
@@ -37,5 +45,6 @@ for version in $@; do
     | sed "s/#APCU_VERSION#/${apcu_version[${version}]}/g" \
     | sed "s/#XDEBUG_VERSION#/${xdebug_version[${version}]}/g" \
     | sed "s/#EXTENSION_DIR#/${extensions_dir[${version}]}/g" \
+    | sed "s/#DEPENDENCIES#/${dependencies[${version}]}/g" \
     >> ${dockerfile}
 done
