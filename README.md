@@ -2,7 +2,7 @@
 
 This image is based on the official php image.
 It also does the following:
-* Enable `pdo_pgsql`, `pdo_mysql`, `mbstring`, `mcrypt`, `zip`, `sockets`, `intl` and `bcmath` extensions.
+* Enable `pdo_pgsql`, `pdo_mysql`, `mysqli`, `mbstring`, `mcrypt`, `zip`, `sockets`, `intl` and `bcmath` extensions.
 * Install [composer](https://getcomposer.org/).
 * Install [XDebug](https://xdebug.org/).
 * Install [APCu](http://php.net/manual/en/book.apcu.php).
