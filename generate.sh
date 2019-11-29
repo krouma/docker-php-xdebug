@@ -7,7 +7,7 @@ apcu_version=(
 	[7.1]='apcu-stable'
 	[7.2]='apcu-stable'
 	[7.3]='apcu-stable'
-	[7.4-rc]='apcu-stable'
+	[7.4]='apcu-stable'
 )
 
 declare -A xdebug_version
@@ -17,7 +17,7 @@ xdebug_version=(
 	[7.1]='xdebug-stable'
 	[7.2]='xdebug-stable'
 	[7.3]='xdebug-stable'
-	[7.4-rc]='xdebug-beta'
+	[7.4]='xdebug-beta'
 )
 
 declare -A extensions_dir
@@ -27,7 +27,7 @@ extensions_dir=(
 	[7.1]='no-debug-non-zts-20160303'
 	[7.2]='no-debug-non-zts-20170718'
 	[7.3]='no-debug-non-zts-20180731'
-	[7.4-rc]='no-debug-non-zts-20190529'
+	[7.4]='no-debug-non-zts-20190529'
 )
 declare -A dependencies
 dependencies=(
@@ -36,7 +36,7 @@ dependencies=(
     [7.1]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
     [7.2]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
     [7.3]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.4-rc]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz libonig-dev'
+    [7.4]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz libonig-dev'
 )
 
 for version in $@; do

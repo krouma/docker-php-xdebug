@@ -1,9 +1,9 @@
-FROM php:7.4-rc-apache
+FROM php:7.4-apache
 
 LABEL maintainer "Matyas Kroupa <kroupa.matyas@gmail.com>"
 
 RUN apt-get update && apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz libonig-dev && rm -rf /var/lib/apt/lists/*
-RUN docker-php-ext-install pdo_pgsql pdo_mysql mbstring zip sockets intl bcmath
+RUN docker-php-ext-install pdo_pgsql pdo_mysql mysqli mbstring zip sockets intl bcmath
 
 RUN curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && \
 	chmod +x /usr/local/bin/composer
