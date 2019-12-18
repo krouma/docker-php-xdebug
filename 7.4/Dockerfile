@@ -12,7 +12,7 @@ RUN pecl install xdebug-stable
 
 RUN pecl install apcu-stable
 
-RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190529/xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini && \
+RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190902/xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.default_enable = 1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.remote_enable = 1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.remote_handler = dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini && \
@@ -24,7 +24,7 @@ RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190529
     echo "xdebug.profiler_enable_trigger=1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.profiler_output_dir=\"/tmp\"" >> /usr/local/etc/php/conf.d/xdebug.ini
 
-RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190529/opcache.so" > /usr/local/etc/php/conf.d/opcache.ini
+RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190902/opcache.so" > /usr/local/etc/php/conf.d/opcache.ini
 
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini && \
     echo "apc.enable_cli=1" >> /usr/local/etc/php/conf.d/apcu.ini

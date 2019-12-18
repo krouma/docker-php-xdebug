@@ -27,7 +27,7 @@ extensions_dir=(
 	[7.1]='no-debug-non-zts-20160303'
 	[7.2]='no-debug-non-zts-20170718'
 	[7.3]='no-debug-non-zts-20180731'
-	[7.4]='no-debug-non-zts-20190529'
+	[7.4]='no-debug-non-zts-20190902'
 )
 declare -A dependencies
 dependencies=(
