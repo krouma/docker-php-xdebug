@@ -7,13 +7,13 @@ HIGHEST_MINOR=0
 
 for VERSION in $VERSIONS; do
     # Determine newest patch version
-    ABS_VERSION=$(docker images krouma/php-xdebug --format "{{.Tag}}"| grep $VERSION | sort -k1 -r | head -n1)
+    ABS_VERSION=$(buildah images krouma/php-xdebug --format "{{.Tag}}"| grep $VERSION | sort -k1 -r | head -n1)
     MAJOR_VERSION=$(echo $VERSION | cut -d "." -f1)
     MINOR_VERSION=$(echo $VERSION | cut -d "." -f2)
     
     # Push
-    docker push krouma/php-xdebug:$VERSION
-    docker push krouma/php-xdebug:$ABS_VERSION
+    buildah push krouma/php-xdebug:$VERSION
+    buildah push krouma/php-xdebug:$ABS_VERSION
     
     if [ $MAJOR_VERSION -gt $HIGHEST_MAJOR ]; then
         HIGHEST_MAJOR=$MAJOR_VERSION
@@ -23,9 +23,9 @@ for VERSION in $VERSIONS; do
     fi
 done
 
-docker tag krouma/php-xdebug:${HIGHEST_MAJOR}.${HIGHEST_MINOR} krouma/php-xdebug:${HIGHEST_MAJOR}
-docker tag krouma/php-xdebug:${HIGHEST_MAJOR}.${HIGHEST_MINOR} krouma/php-xdebug:latest
+buildah tag krouma/php-xdebug:${HIGHEST_MAJOR}.${HIGHEST_MINOR} krouma/php-xdebug:${HIGHEST_MAJOR}
+buildah tag krouma/php-xdebug:${HIGHEST_MAJOR}.${HIGHEST_MINOR} krouma/php-xdebug:latest
 
-docker push krouma/php-xdebug:${HIGHEST_MAJOR}
-docker push krouma/php-xdebug:latest
+buildah push krouma/php-xdebug:${HIGHEST_MAJOR}
+buildah push krouma/php-xdebug:latest
 
