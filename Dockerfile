@@ -1,41 +1,17 @@
-LABEL maintainer "Matyas Kroupa <kroupa.matyas@gmail.com>"
+RUN dnf update -y && \
+    dnf install -y #DEPENDENCIES# && \
+    dnf clean all
 
-RUN apt-get update && #DEPENDENCIES# && rm -rf /var/lib/apt/lists/*
-RUN docker-php-ext-install pdo_pgsql pdo_mysql mysqli mbstring zip sockets intl bcmath
-
-RUN curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && \
-	chmod +x /usr/local/bin/composer
-
-RUN pecl install #XDEBUG_VERSION#
-
-RUN pecl install #APCU_VERSION#
-
-RUN echo "zend_extension=/usr/local/lib/php/extensions/#EXTENSION_DIR#/xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.default_enable = 1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_enable = 1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_handler = dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_autostart = 0" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_connect_back = 1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_port = 9000" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.remote_host = 172.17.42.1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.profiler_enable=0" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.profiler_enable_trigger=1" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.profiler_output_dir=\"/tmp\"" >> /usr/local/etc/php/conf.d/xdebug.ini
-
-RUN echo "zend_extension=/usr/local/lib/php/extensions/#EXTENSION_DIR#/opcache.so" > /usr/local/etc/php/conf.d/opcache.ini
-
-RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini && \
-    echo "apc.enable_cli=1" >> /usr/local/etc/php/conf.d/apcu.ini
-
-RUN echo "realpath_cache_size=4096k" > /usr/local/etc/php/conf.d/tuning.ini && \
-    echo "realpath_cache_ttl=300" >> /usr/local/etc/php/conf.d/tuning.ini
-
-RUN echo "date.timezone = \"UTC\"" >> /usr/local/etc/php/conf.d/timezone.ini
-
-RUN a2enmod rewrite
+RUN echo "xdebug.mode=debug" >> /etc/php.d/15-xdebug.ini && \
+    echo "realpath_cache_size=4096k" > /etc/php.d/tuning.ini && \
+    echo "realpath_cache_ttl=300" >> /etc/php.d/tuning.ini && \
+    echo "date.timezone = \"UTC\"" >> /etc/php.d/timezone.ini
 
 RUN mkdir /var/www/html/log; \
     mkdir -p /var/www/html/temp/cache; \
     chmod 777 -R /var/www/html/log /var/www/html/temp
 
+ADD ./root /
+
 EXPOSE 80
+CMD ["/usr/local/bin/run-httpd"]

@@ -1,54 +1,32 @@
 #!/usr/bin/env bash
 
-declare -A apcu_version
-apcu_version=(
-	[5.6]='apcu-4.0.11'
-	[7.0]='apcu-stable'
-	[7.1]='apcu-stable'
-	[7.2]='apcu-stable'
-	[7.3]='apcu-stable'
-	[7.4]='apcu-stable'
-)
+source ./variables.sh
 
-declare -A xdebug_version
-xdebug_version=(
-	[5.6]='xdebug-2.5.5'
-	[7.0]='xdebug-stable'
-	[7.1]='xdebug-stable'
-	[7.2]='xdebug-stable'
-	[7.3]='xdebug-stable'
-	[7.4]='xdebug-stable'
-)
+php_version=$1
+fedora_version=$2
+repo=$3
+php_mm_version=$(echo $1 | sed 's/^\([0-9]\)\.\([0-9]\)-rc/\1.\2/')
 
-declare -A extensions_dir
-extensions_dir=(
-	[5.6]='no-debug-non-zts-20131226'
-	[7.0]='no-debug-non-zts-20151012'
-	[7.1]='no-debug-non-zts-20160303'
-	[7.2]='no-debug-non-zts-20170718'
-	[7.3]='no-debug-non-zts-20180731'
-	[7.4]='no-debug-non-zts-20190902'
-)
-declare -A dependencies
-dependencies=(
-    [5.6]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.0]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.1]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.2]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.3]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz'
-    [7.4]='apt-get install -y git libpq-dev libmcrypt-dev zlib1g-dev libicu-dev libzip-dev g++ graphviz libonig-dev'
-)
+mkdir -p "${php_version}"
+dockerfile=${php_version}/Dockerfile
 
-for version in $@; do
-  mkdir -p "${version}"
-  dockerfile=${version}/Dockerfile
-  echo "FROM php:${version}-apache" > ${dockerfile}
-  echo >> ${dockerfile}
+echo "FROM fedora:${fedora_version}" > ${dockerfile}
+echo 'LABEL maintainer "Matyas Kroupa <kroupa.matyas@gmail.com>"' >> ${dockerfile}
+echo >> ${dockerfile}
 
-  cat Dockerfile \
-    | sed "s/#APCU_VERSION#/${apcu_version[${version}]}/g" \
-    | sed "s/#XDEBUG_VERSION#/${xdebug_version[${version}]}/g" \
-    | sed "s/#EXTENSION_DIR#/${extensions_dir[${version}]}/g" \
-    | sed "s/#DEPENDENCIES#/${dependencies[${version}]}/g" \
+if [ $repo = "remi" ]; then
+    cat << EOF >> ${dockerfile}
+RUN dnf install -y https://rpms.remirepo.net/fedora/remi-release-${fedora_version}.rpm \\
+        dnf-plugins-core && \\
+    dnf config-manager --set-enabled remi && \\
+    dnf config-manager --set-enabled remi-modular && \\
+    dnf module install -y php:remi-${php_mm_version} && \\
+    dnf install -y php-opcache php-pecl-xdebug3 php-pecl-zip
+EOF
+fi
+echo >> ${dockerfile}
+
+cat Dockerfile \
+    | sed "s/#EXTENSION_DIR#/${extensions_dir[${php_version}]}/g" \
+    | sed "s/#DEPENDENCIES#/${dependencies[${php_version}]}/g" \
     >> ${dockerfile}
-done

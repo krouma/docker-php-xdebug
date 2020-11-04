@@ -7,7 +7,7 @@ HIGHEST_MINOR=0
 
 for VERSION in $VERSIONS; do
     # Determine newest patch version
-    ABS_VERSION=$(buildah images krouma/php-xdebug --format "{{.Tag}}"| grep $VERSION | sort -k1 -r | head -n1)
+    ABS_VERSION=$(buildah images --format "{{.Tag}}" krouma/php-xdebug | grep $VERSION | sort -k1 -r | head -n1)
     MAJOR_VERSION=$(echo $VERSION | cut -d "." -f1)
     MINOR_VERSION=$(echo $VERSION | cut -d "." -f2)
     

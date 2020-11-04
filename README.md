@@ -3,25 +3,21 @@
 This image is based on the official php image.
 It also does the following:
 * Enable `pdo_pgsql`, `pdo_mysql`, `mysqli`, `mbstring`, `mcrypt`, `zip`, `sockets`, `intl` and `bcmath` extensions.
-* Install [composer](https://getcomposer.org/).
 * Install [XDebug](https://xdebug.org/).
-* Install [APCu](http://php.net/manual/en/book.apcu.php).
-* Configure [XDebug](https://xdebug.org/) to be used in Docker.
 * Enable [OPCache](http://php.net/manual/en/book.opcache.php).
 * Configure [`realpath_cache_size` and `realpath_cache_ttl`](http://php.net/manual/en/ini.core.php#ini.sect.performance).
 * Set the [default timezone](http://php.net/manual/en/datetime.configuration.php#ini.date.timezone) to `UTC`.
-* Enable the apache [rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html) module.
 
 ## Base image
 
-* [`php`](https://hub.docker.com/_/php/)
+* [`fedora`](https://hub.docker.com/_/fedora/)
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`7.4.0`, `7.4`, `7`, `latest` (*7.4/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.4/Dockerfile)
-* [`7.3.12`, `7.3` (*7.3/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.3/Dockerfile)
-* [`7.2.25`, `7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
-* [`7.1.33`, `7.1` (*7.1/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.1/Dockerfile)
+* [`8.0beta4`, `8.0-rc`, `8-rc` (*8.0-rc/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/8.0-rc/Dockerfile)
+* [`7.4.12`, `7.4`, `7`, `latest` (*7.4/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.4/Dockerfile)
+* [`7.3.24`, `7.3` (*7.3/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.3/Dockerfile)
+* [`7.2.34`, `7.2` (*7.2/Dockerfile*)](https://github.com/krouma/docker-php-xdebug/blob/master/7.2/Dockerfile)
 
 ## How to use this image.
 
