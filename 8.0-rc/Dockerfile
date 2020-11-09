@@ -18,6 +18,7 @@ RUN echo "xdebug.mode=debug" >> /etc/php.d/15-xdebug.ini && \
     echo "date.timezone = \"UTC\"" >> /etc/php.d/timezone.ini
 
 RUN mkdir /var/www/html/log; \
+    mkdir /run/php-fpm; \
     mkdir -p /var/www/html/temp/cache; \
     chmod 777 -R /var/www/html/log /var/www/html/temp
 

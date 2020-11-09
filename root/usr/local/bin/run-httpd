@@ -2,4 +2,5 @@
 
 rm -rf /run/httpd/*
 
+php-fpm
 exec httpd -D FOREGROUND $@
