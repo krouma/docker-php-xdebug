@@ -5,7 +5,7 @@ MINOR_VERSIONS=$@
 for version in ${MINOR_VERSIONS[*]}; do
     #update base image version
     printf "\nGetting latest version of base image\n"
-    buildah pull php:${version}-apache
+    buildah pull $(grep "FROM" ${version}/Dockerfile | tail -c +5)
 
     #build containers
     printf "\nBuilding version ${version}\n"
